@@ -15,3 +15,40 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.nav a {
+    border-left: 1px solid #333;
+}
+input, .login-button{
+    margin:10px auto;
+    display:block;
+    width: 250px;
+    color: #acacac;
+    text-align:center;
+}
+input {
+    height: 30px;
+    border-radius: 6px;
+}
+.login-button, .login-button:visited {
+    background-color: #f0c606;
+    border: 1px solid #786202;
+    color: #333;
+    font-weight: bold;
+}
+    .login-button:hover, .login-button:active {
+        background-color: #ffdc3d;
+        color: #ad9322;
+    }
+.login-box{
+    width: 100%;
+    margin: 15% auto;
+    text-align:center;
+}
+.login-box h1{
+    font-weight:bold;
+    font-family: fantasy;
+}
+footer{
+    text-align:center;
+}

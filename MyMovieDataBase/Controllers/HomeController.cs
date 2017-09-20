@@ -14,5 +14,19 @@ namespace MyMovieDataBase.Controllers
 
 			return View();
 		}
+
+		public ActionResult MyMovies()
+		{
+			ViewBag.Title = "My Movies";
+
+			return View();
+		}
+
+		public ActionResult HandleAccount()
+		{
+			ViewBag.Title = "Handle Account";
+
+			return View();
+		}
 	}
 }
