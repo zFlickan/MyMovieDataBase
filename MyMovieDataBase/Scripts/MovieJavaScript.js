@@ -1,5 +1,5 @@
 ﻿$("#loginButton").click(function () {
-    //alert("Blä!")
+    alert("Blä!")
     var username = $("#username").val()
     var password = $("#password").val()
 
@@ -21,6 +21,7 @@
     })
         .done(function (response) {
             $("#response").html(`Log in status: ${response}`);
+
         })
         .fail(function (xhr, status, error) {
             console.log("Error", xhr, status, error)
