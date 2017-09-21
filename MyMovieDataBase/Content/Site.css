@@ -30,7 +30,7 @@ input {
     height: 30px;
     border-radius: 6px;
 }
-.login-button, .login-button:visited {
+.login-button, .login-button:visited, .login-button:focus {
     background-color: #f0c606;
     border: 1px solid #786202;
     color: #333;
@@ -51,4 +51,13 @@ input {
 }
 footer{
     text-align:center;
+}
+.response, .error{
+    margin-top: 30px;
+}
+.response{
+    color: #007404;
+}
+.error{
+    color: #ff0000;
 }
