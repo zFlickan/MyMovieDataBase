@@ -33,7 +33,7 @@ namespace MyMovieDataBase.Controllers
 			}
 			else
 			{
-				respons = "Log in failed...";
+				respons = "Fel användarnamn eller lösenord.";
 				return BadRequest(respons);
 			}
 
