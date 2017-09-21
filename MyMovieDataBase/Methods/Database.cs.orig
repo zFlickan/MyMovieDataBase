@@ -16,10 +16,16 @@ namespace MyMovieDataBase.Methods
         {
             var session = DbService.OpenSession();
 
+<<<<<<< HEAD
+			DropAndCreateDB();
+			FillGenreTable(session);
+			FillMovieTable(session);
+=======
             DropAndCreateDB();
             FillGenreTable(session);
             FillMovieTable(session);
             FillUserTable(session);
+>>>>>>> 7d46bc066f4608a5f4060ecf2ce30e6f46cfb7f6
 
             DbService.CloseSession(session);
         }
@@ -47,6 +53,15 @@ namespace MyMovieDataBase.Methods
             }
         }
 
+<<<<<<< HEAD
+		private static void FillMovieTable(ISession session)
+		{
+			var horror = session.Query<Genre>().Where(c => c.GenreName == "Horror").Single();
+			var war = session.Query<Genre>().Where(c => c.GenreName == "War").Single();
+			var action = session.Query<Genre>().Where(c => c.GenreName == "Action").Single();
+			var biography = session.Query<Genre>().Where(c => c.GenreName == "Biography").Single();
+			var drama = session.Query<Genre>().Where(c => c.GenreName == "Drama").Single();
+=======
         private static void FillMovieTable(ISession session)
         {
             var horror = session.Query<Genre>().Where(c => c.GenreName == "Horror").Single();
@@ -54,6 +69,7 @@ namespace MyMovieDataBase.Methods
             var action = session.Query<Genre>().Where(c => c.GenreName == "Action").Single();
             var biography = session.Query<Genre>().Where(c => c.GenreName == "Biography").Single();
             var drama = session.Query<Genre>().Where(c => c.GenreName == "Drama").Single();
+>>>>>>> 7d46bc066f4608a5f4060ecf2ce30e6f46cfb7f6
 
             Movie ApocalypseNow = new Movie
             {
