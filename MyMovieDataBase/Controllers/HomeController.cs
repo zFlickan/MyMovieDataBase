@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MyMovieDataBase.Services;
+using NHibernate;
+using NHibernate.Linq;
+using NHibernate.Tool.hbm2ddl;
+using MyMovieDataBase.Methods;
 
 namespace MyMovieDataBase.Controllers
 {
@@ -11,7 +16,10 @@ namespace MyMovieDataBase.Controllers
 		public ActionResult Index()
 		{
 			ViewBag.Title = "Home Page";
-
+			
+			//Run once then comment
+			Database.CreateDatabase();
+			
 			return View();
 		}
 
