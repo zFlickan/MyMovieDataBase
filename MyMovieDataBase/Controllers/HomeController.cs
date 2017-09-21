@@ -8,6 +8,7 @@ using NHibernate;
 using NHibernate.Linq;
 using NHibernate.Tool.hbm2ddl;
 using MyMovieDataBase.Methods;
+using MyMovieDataBase.Domain;
 
 namespace MyMovieDataBase.Controllers
 {
@@ -16,9 +17,9 @@ namespace MyMovieDataBase.Controllers
 		public ActionResult Index()
 		{
 			ViewBag.Title = "Home Page";
-			
+
 			//Run once then comment
-			Database.CreateDatabase();
+			//Database.CreateDatabase();
 			
 			return View();
 		}
@@ -26,8 +27,8 @@ namespace MyMovieDataBase.Controllers
 		public ActionResult MyMovies()
 		{
 			ViewBag.Title = "My Movies";
-
-			return View();
+			var model = Read.ReadAll();
+			return View(model);
 		}
 
 		public ActionResult HandleAccount()

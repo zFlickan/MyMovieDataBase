@@ -18,7 +18,7 @@ namespace MyMovieDataBase.Methods
 
 			DropAndCreateDB();
 			FillGenreTable(session);
-			AddMovies(session);
+			FillMovieTable(session);
 
 			DbService.CloseSession(session);
 		}
@@ -46,7 +46,7 @@ namespace MyMovieDataBase.Methods
 			}
 		}
 
-		private static void AddMovies(ISession session)
+		private static void FillMovieTable(ISession session)
 		{
 			var horror = session.Query<Genre>().Where(c => c.GenreName == "Horror").Single();
 			var war = session.Query<Genre>().Where(c => c.GenreName == "War").Single();

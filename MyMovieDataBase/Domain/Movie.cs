@@ -5,7 +5,7 @@ using System.Web;
 
 namespace MyMovieDataBase.Domain
 {
-	class Movie
+	public class Movie
 	{
 		public Movie()
 		{
