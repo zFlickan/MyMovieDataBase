@@ -4,20 +4,25 @@
     
 }
 @model List<MyMovieDataBase.Domain.Movie>
-<h2>MyMovies</h2>
-
-<h1>Movie</h1>
+<h2>My Movies</h2>
 
 <table>
     <tr>
         <th>Title</th>
         <th>Year</th>
+        <th>Genres</th>
+        <th>Rating</th>
+        <th>Link</th>
+        
     </tr>
     @foreach (var movie in Model)
     {
         <tr>
             <td>@movie.Title</td>
             <td>@movie.Year</td>
+            @*<td>@movie.Genres</td>*@<td></td>
+            <td>@movie.Rating</td>
+            <td>@movie.Link</td>
         </tr>
     }
 </table>
