@@ -4,7 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using MyMovieDataBase.Domain;
+using MyMovieDataBase.Services;
+using NHibernate.Linq;
 
 namespace MyMovieDataBase.Controllers
 {
@@ -16,8 +18,16 @@ namespace MyMovieDataBase.Controllers
 		[Route("LogIn"), HttpGet]
 		public IHttpActionResult LogIn(string userNameInput, string passwordInput)
 		{
-			string respons = "";
-			if (userNameInput == "frida" && passwordInput == "apa" || userNameInput == "lena" && passwordInput == "kobajs")
+            var session = DbService.OpenSession();
+
+            var dbUser = session.Query<MmdbUser>().Where(c => c.Username == userNameInput && c.Password == passwordInput).Single();
+            //var dbUser = session.Query<MmdbUser>().Where(c => c.Username == userNameInput).Single();
+            //var dbPassword = session.Query<MmdbUser>().Where(c => c.Password == passwordInput).Single();
+
+            
+
+            string respons = "";
+			if (userNameInput == dbUser.Username && passwordInput == dbUser.Password)
 			{
 				respons = "Log in successfull!";
 			}
@@ -27,8 +37,11 @@ namespace MyMovieDataBase.Controllers
 				return BadRequest(respons);
 			}
 
+            DbService.CloseSession(session);
+
 			return Ok(respons);
-		}
+
+        }
 		//***************************************************************//
 
 

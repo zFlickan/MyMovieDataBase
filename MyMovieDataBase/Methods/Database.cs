@@ -100,6 +100,8 @@ namespace MyMovieDataBase.Methods
 
         private static void FillUserTable(ISession session)
         {
+            
+
             MmdbUser Frida = new MmdbUser()
             {
                 Username = "frida@frida.se",
