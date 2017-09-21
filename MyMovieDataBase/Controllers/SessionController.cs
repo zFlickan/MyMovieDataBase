@@ -14,10 +14,10 @@ namespace MyMovieDataBase.Controllers
 		//**************************************************************//
 		//						                              LOG IN	//
 		[Route("LogIn"), HttpGet]
-		public IHttpActionResult LogIn(string userName)
+		public IHttpActionResult LogIn(string userNameInput, string passwordInput)
 		{
 			string respons = "";
-			if (userName == "frida")
+			if (userNameInput == "frida" && passwordInput == "apa" || userNameInput == "lena" && passwordInput == "kobajs")
 			{
 				respons = "Log in successfull!";
 			}
