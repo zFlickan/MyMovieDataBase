@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MyMovieDataBase.Domain
 {
-    class User
+    public class MmdbUser
     {
         //public User()
         //{

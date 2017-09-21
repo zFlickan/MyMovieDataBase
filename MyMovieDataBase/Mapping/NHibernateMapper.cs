@@ -22,7 +22,7 @@ namespace MyMovieDataBase.Mapping
 		{
 			MapMovie();
 			MapGenre();
-            MapUser();
+            MapMmdbUser();
 			return _modelMapper.CompileMappingForAllExplicitlyAddedEntities();
 		}
 
@@ -74,11 +74,11 @@ namespace MyMovieDataBase.Mapping
 			});
 
 		}
-        private void MapUser()
+        private void MapMmdbUser()
         {
-            _modelMapper.Class<User>(e =>
+            _modelMapper.Class<MmdbUser>(e =>
             {
-                e.Table("[User]");  
+                  
                 e.Id(p => p.UserID, p => p.Generator(Generators.GuidComb));
                 e.Property(p => p.Username);
                 e.Property(p => p.Password);

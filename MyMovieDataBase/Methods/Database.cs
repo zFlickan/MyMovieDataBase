@@ -100,19 +100,19 @@ namespace MyMovieDataBase.Methods
 
         private static void FillUserTable(ISession session)
         {
-            //User Frida = new User()
-            //{
-            //    Username = "frida@frida.se",
-            //    Password = "apa"
-            //};
+            MmdbUser Frida = new MmdbUser()
+            {
+                Username = "frida@frida.se",
+                Password = "apa"
+            };
 
-            //User Lena = new User()
-            //{
-            //    Username = "lena.fridlund@hotmail.com",
-            //    Password = "kobajs"
-            //};
-            //session.Save(Frida);
-            //session.Save(Lena);
+            MmdbUser Lena = new MmdbUser()
+            {
+                Username = "lena.fridlund@hotmail.com",
+                Password = "kobajs"
+            };
+            session.Save(Frida);
+            session.Save(Lena);
         }
     }
 }
