@@ -20,14 +20,26 @@ namespace MyMovieDataBase.Controllers
 
 			//Run once then comment
 			//Database.CreateDatabase();
-			
 			return View();
+			
 		}
 
-		public ActionResult MyMovies()
+		[HttpGet]
+		public ActionResult MyMovies(string username)
 		{
 			ViewBag.Title = "My Movies";
+
+			var session = DbService.OpenSession();
+			var dbUser = session.Query<MmdbUser>().Where(c => c.Username == username).Single();
+			if (username == dbUser.Username)
+			{
+				Session["UserID"] = dbUser.UserID;
+			}
+			DbService.CloseSession(session);
+
 			var model = Read.ReadAll();
+			//var model = Read.ReadAll(dbUser.UserID);
+
 			return View(model);
 		}
 

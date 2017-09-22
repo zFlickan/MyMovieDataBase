@@ -22,7 +22,7 @@ $("#loginButton").click(function () {
     })
         .done(function (response) {
             $("#response").html(`Log in status: ${response}`);
-            window.location.replace("/home/mymovies")
+            window.location.replace( `/home/mymovies?username=${username}`)
         })
         .fail(function (xhr, status, error) {
             console.log("Error", xhr, status, error)

@@ -19,5 +19,14 @@ namespace MyMovieDataBase.Methods
 			DbService.CloseSession(session);
 			return allMovies;
 		}
+
+		//If connect User with Movies
+		//internal static List<Movie> ReadAll(Guid userId)
+		//{
+		//	var session = DbService.OpenSession();
+		//	var allMovies = session.Query<UserMovies>().Where(c => c.UserID == userId).ToList();
+		//	DbService.CloseSession(session);
+		//	return allMovies;
+		//}
 	}
 }
