@@ -1,13 +1,8 @@
 ﻿
 $("#loginButton").click(function () {
-    //alert("Blä!")
+    
     var username = $("#username").val()
     var password = $("#password").val()
-
-    //if (!$.isNumeric(userIdInput)) {
-    //    $("#error").html("Skriv in ett heltal.")
-    //    return
-    //}
 
     $("#response").html("")
     $("#error").html("")
@@ -52,43 +47,42 @@ $("#password").focusout(function () {
     }
 })
 
+//$("#createButton").click(function () {
+//    //alert("Blä!")
+//    var newUsername = $("#newUsername").val()
+//    var newPassword = $("#newPassword").val()    
 
-$("#createButton").click(function () {
-    //alert("Blä!")
-    var newUsername = $("#newUsername").val()
-    var newPassword = $("#newPassword").val()    
+//    //if (!$.isNumeric(userIdInput)) {
+//    //    $("#error").html("Skriv in ett heltal.")
+//    //    return
+//    //}
 
-    //if (!$.isNumeric(userIdInput)) {
-    //    $("#error").html("Skriv in ett heltal.")
-    //    return
-    //}
+//    $("#response").html("")
+//    $("#error").html("")
 
-    $("#response").html("")
-    $("#error").html("")
+//    $.ajax({
+//        url: '/Session/CreateNewUser',
+//        method: 'POST',
+//        data: {
+//            Username: newUsername,
+//            Password: newPassword            
+//        }
+//    })
+//        .done(function (response) {
+//            $("#response").html(`Status: ${response}`);
+//            window.location.replace(`/home/mymovies?username=${newUsername}`)
+//        })
+//        .fail(function (xhr, status, error) {
+//            console.log("Error", xhr, status, error)
+//            $("#error").html(`Error! ${xhr.responseJSON.Message}`);
+//        })
+//})
+//$("#verifyPassword").focusout(function () {
 
-    $.ajax({
-        url: '/Session/CreateNewUser',
-        method: 'POST',
-        data: {
-            Username: newUsername,
-            Password: newPassword            
-        }
-    })
-        .done(function (response) {
-            $("#response").html(`Status: ${response}`);
-            window.location.replace(`/home/mymovies?username=${newUsername}`)
-        })
-        .fail(function (xhr, status, error) {
-            console.log("Error", xhr, status, error)
-            $("#error").html(`Error! ${xhr.responseJSON.Message}`);
-        })
-})
-$("#verifyPassword").focusout(function () {
-
-    if ($("#newPassword").val() === $("#verifyPassword").val()) {
-        $("#response").html("pass ok")
-    }
-    else (
-        $("#error").html("Password is NOT ok")
-    )
-})
+//    if ($("#newPassword").val() === $("#verifyPassword").val()) {
+//        $("#response").html("pass ok")
+//    }
+//    else (
+//        $("#error").html("Password is NOT ok")
+//    )
+//})
