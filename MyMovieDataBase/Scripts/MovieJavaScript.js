@@ -22,7 +22,7 @@ $("#loginButton").click(function () {
     })
         .done(function (response) {
             $("#response").html(`Log in status: ${response}`);
-            window.location.replace( `/home/mymovies?username=${username}`)
+            window.location.replace(`/home/mymovies?username=${username}`)
         })
         .fail(function (xhr, status, error) {
             console.log("Error", xhr, status, error)
@@ -57,8 +57,7 @@ $("#password").focusout(function () {
 $("#createButton").click(function () {
     //alert("Blä!")
     var newUsername = $("#newUsername").val()
-    var newPassword = $("#newPassword").val()
-    var verifyPassword = $("#verifyPassword").val()
+    var newPassword = $("#newPassword").val()    
 
     //if (!$.isNumeric(userIdInput)) {
     //    $("#error").html("Skriv in ett heltal.")
@@ -72,9 +71,8 @@ $("#createButton").click(function () {
         url: '/Session/CreateNewUser',
         method: 'POST',
         data: {
-            newUserName: newUsername,
-            newPassword: newPassword,
-            verifyPassword: verifyPassword
+            Username: newUsername,
+            Password: newPassword            
         }
     })
         .done(function (response) {
@@ -85,5 +83,13 @@ $("#createButton").click(function () {
             console.log("Error", xhr, status, error)
             $("#error").html(`Error! ${xhr.responseJSON.Message}`);
         })
+})
+$("#verifyPassword").focusout(function () {
 
+    if ($("#newPassword").val() === $("#verifyPassword").val()) {
+        $("#response").html("pass ok")
+    }
+    else (
+        $("#error").html("Password is NOT ok")
+    )
 })

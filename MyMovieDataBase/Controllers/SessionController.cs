@@ -36,29 +36,25 @@ namespace MyMovieDataBase.Controllers
             DbService.CloseSession(session);
 
             return Ok(response);
-
         }
 
         [Route("CreateNewUser"), HttpPost]
-        public IHttpActionResult CreateNewUser(string newUserName, string newPassword, string verifyPassword)
+        public IHttpActionResult CreateNewUser(MmdbUser newUser)
         {
             var session = DbService.OpenSession();
             string response = "";
+            string newUsername = newUser.Username;
+            string newPassword = newUser.Password;
 
-            if (newPassword == verifyPassword)
+            MmdbUser newMmdbUser = new MmdbUser()
             {
-                MmdbUser mmdbUser = new MmdbUser()
-                {
-                    Username = newUserName,
-                    Password = newPassword
-                };
-                session.Save(mmdbUser);
-                response = "New user created successfully.";
-            }
-            else
-            {
-                response = "Error in creating new user.";
-            }
+                Username = newUsername,
+                Password = newPassword
+            };
+            session.Save(newMmdbUser);
+
+            response = "New user created successfully.";
+
             DbService.CloseSession(session);
 
             return Ok(response);
