@@ -10,77 +10,99 @@ using NHibernate.Linq;
 
 namespace MyMovieDataBase.Controllers
 {
-	[RoutePrefix("Session")]
-	public class SessionController : ApiController
-	{
-		//**************************************************************//
-		//						                              LOG IN	//
-		[Route("LogIn"), HttpGet]
-		public IHttpActionResult LogIn(string userNameInput, string passwordInput)
-		{
+    [RoutePrefix("Session")]
+    public class SessionController : ApiController
+    {
+        //**************************************************************//
+        //						                              LOG IN	//
+        [Route("LogIn"), HttpGet]
+        public IHttpActionResult LogIn(string userNameInput, string passwordInput)
+        {
             var session = DbService.OpenSession();
 
             var dbUser = session.Query<MmdbUser>().Where(c => c.Username == userNameInput && c.Password == passwordInput).Single();
-            //var dbUser = session.Query<MmdbUser>().Where(c => c.Username == userNameInput).Single();
-            //var dbPassword = session.Query<MmdbUser>().Where(c => c.Password == passwordInput).Single();
 
-            
-
-            string respons = "";
-			if (userNameInput == dbUser.Username && passwordInput == dbUser.Password)
-			{
-				respons = "Log in successfull!";
-			}
-			else
-			{
-				respons = "Fel användarnamn eller lösenord.";
-				return BadRequest(respons);
-			}
+            string response = "";
+            if (userNameInput == dbUser.Username && passwordInput == dbUser.Password)
+            {
+                response = "Log in successfull!";
+            }
+            else
+            {
+                response = "Invalid username or password.";
+                return BadRequest(response);
+            }
 
             DbService.CloseSession(session);
 
-			return Ok(respons);
+            return Ok(response);
 
         }
-		//***************************************************************//
+
+        [Route("CreateNewUser"), HttpPost]
+        public IHttpActionResult CreateNewUser(string newUserName, string newPassword, string verifyPassword)
+        {
+            var session = DbService.OpenSession();
+            string response = "";
+
+            if (newPassword == verifyPassword)
+            {
+                MmdbUser mmdbUser = new MmdbUser()
+                {
+                    Username = newUserName,
+                    Password = newPassword
+                };
+                session.Save(mmdbUser);
+                response = "New user created successfully.";
+            }
+            else
+            {
+                response = "Error in creating new user.";
+            }
+            DbService.CloseSession(session);
+
+            return Ok(response);
+
+        }
+        //***************************************************************//
 
 
-		//***************************************************************//
-		//														LOG OUT  //
-		[Route("LogOut")]
-		public IHttpActionResult LogOut()
-		{
+        //***************************************************************//
+        //														LOG OUT  //
+        [Route("LogOut")]
+        public IHttpActionResult LogOut()
+        {
 
-			return Ok();
-		}
-		//***************************************************************//
+            return Ok();
+        }
+        //***************************************************************//
 
 
-		// GET api/values
-		public IEnumerable<string> Get()
-		{
-			return new string[] { "value1", "value2" };
-		}
+        // GET api/values
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
 
-		// GET api/values/5
-		public string Get(int id)
-		{
-			return "value";
-		}
+        // GET api/values/5
+        public string Get(int id)
+        {
+            return "value";
+        }
 
-		// POST api/values
-		public void Post([FromBody]string value)
-		{
-		}
+        // POST api/values
+        public void Post([FromBody]string value)
+        {
+        }
 
-		// PUT api/values/5
-		public void Put(int id, [FromBody]string value)
-		{
-		}
+        // PUT api/values/5
+        public void Put(int id, [FromBody]string value)
+        {
+        }
 
-		// DELETE api/values/5
-		public void Delete(int id)
-		{
-		}
-	}
+        // DELETE api/values/5
+        public void Delete(int id)
+        {
+        }
+    }
 }

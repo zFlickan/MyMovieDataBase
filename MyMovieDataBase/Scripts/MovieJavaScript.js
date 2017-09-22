@@ -52,3 +52,38 @@ $("#password").focusout(function () {
         $("#password").attr("placeholder", "Password").val("").focus().blur();
     }
 })
+
+
+$("#createButton").click(function () {
+    //alert("Blä!")
+    var newUsername = $("#newUsername").val()
+    var newPassword = $("#newPassword").val()
+    var verifyPassword = $("#verifyPassword").val()
+
+    //if (!$.isNumeric(userIdInput)) {
+    //    $("#error").html("Skriv in ett heltal.")
+    //    return
+    //}
+
+    $("#response").html("")
+    $("#error").html("")
+
+    $.ajax({
+        url: '/Session/CreateNewUser',
+        method: 'POST',
+        data: {
+            newUserName: newUsername,
+            newPassword: newPassword,
+            verifyPassword: verifyPassword
+        }
+    })
+        .done(function (response) {
+            $("#response").html(`Status: ${response}`);
+            window.location.replace(`/home/mymovies?username=${newUsername}`)
+        })
+        .fail(function (xhr, status, error) {
+            console.log("Error", xhr, status, error)
+            $("#error").html(`Error! ${xhr.responseJSON.Message}`);
+        })
+
+})
