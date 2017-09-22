@@ -28,7 +28,6 @@ $("#loginButton").click(function () {
             console.log("Error", xhr, status, error)
             $("#error").html(`Error! ${xhr.responseJSON.Message}`);
         })
-
 })
 
 $("#username").focus(function () {

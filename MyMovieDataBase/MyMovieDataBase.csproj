@@ -251,6 +251,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\MyMovies.cshtml" />
     <Content Include="Views\Home\HandleAccount.cshtml" />
+    <Content Include="Views\Home\NewUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

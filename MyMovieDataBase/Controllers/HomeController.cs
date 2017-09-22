@@ -49,5 +49,12 @@ namespace MyMovieDataBase.Controllers
 
 			return View();
 		}
-	}
+
+        public ActionResult NewUser()
+        {
+            ViewBag.Title = "NewUser";
+
+            return View();
+        }
+    }
 }
